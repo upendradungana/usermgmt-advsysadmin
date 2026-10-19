@@ -1,0 +1,419 @@
+--- 2026-10-17 01:49:41 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          155m
+api-64885d7665-2f5xr   1/1   Running   1 (18m ago)   20m
+api-64885d7665-dmrwh   1/1   Running   1 (19m ago)   20m
+Pods listed: 2
+
+--- 2026-10-17 01:50:11 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          156m
+api-64885d7665-2f5xr   1/1   Running   1 (19m ago)   20m
+api-64885d7665-dmrwh   1/1   Running   1 (19m ago)   20m
+Pods listed: 2
+
+--- 2026-10-17 01:50:42 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          156m
+api-64885d7665-2f5xr   1/1   Running   1 (19m ago)   21m
+api-64885d7665-dmrwh   1/1   Running   1 (20m ago)   21m
+Pods listed: 2
+
+--- 2026-10-17 01:51:12 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          157m
+api-64885d7665-2f5xr   1/1   Running   1 (20m ago)   21m
+api-64885d7665-dmrwh   1/1   Running   1 (20m ago)   21m
+Pods listed: 2
+
+--- 2026-10-17 01:51:43 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          157m
+api-64885d7665-2f5xr   1/1   Running   1 (20m ago)   22m
+api-64885d7665-dmrwh   1/1   Running   1 (21m ago)   22m
+Pods listed: 2
+
+--- 2026-10-17 01:52:13 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          158m
+api-64885d7665-2f5xr   1/1   Running   1 (21m ago)   22m
+api-64885d7665-dmrwh   1/1   Running   1 (21m ago)   22m
+Pods listed: 2
+
+--- 2026-10-17 01:52:44 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          158m
+api-64885d7665-2f5xr   1/1   Running   1 (21m ago)   23m
+api-64885d7665-dmrwh   1/1   Running   1 (22m ago)   23m
+Pods listed: 2
+
+--- 2026-10-17 01:53:14 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          159m
+api-64885d7665-2f5xr   0/1   Running   2 (28s ago)   23m
+api-64885d7665-dmrwh   1/1   Running   1 (22m ago)   23m
+Pods listed: 2
+
+--- 2026-10-17 01:53:45 ---
+NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 159%/50%   2         6         2          159m
+api-64885d7665-2f5xr   0/1   Running   2 (59s ago)   24m
+api-64885d7665-4wxft   1/1   Running   0             13s
+api-64885d7665-dmrwh   0/1   Running   2 (6s ago)    24m
+api-64885d7665-g5cl7   1/1   Running   0             13s
+Pods listed: 4
+
+--- 2026-10-17 01:54:16 ---
+NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 159%/50%   2         6         6          160m
+api-64885d7665-2f5xr   1/1   Running   2 (89s ago)   24m
+api-64885d7665-4wxft   1/1   Running   0             43s
+api-64885d7665-dmrwh   1/1   Running   2 (36s ago)   24m
+api-64885d7665-g5cl7   1/1   Running   0             43s
+api-64885d7665-nvw2f   0/1   Running   0             27s
+api-64885d7665-wqc9g   1/1   Running   0             27s
+Pods listed: 6
+
+--- 2026-10-17 01:54:46 ---
+NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 111%/50%   2         6         6          160m
+api-64885d7665-2f5xr   1/1   Running   2 (2m ago)    25m
+api-64885d7665-4wxft   1/1   Running   0             74s
+api-64885d7665-dmrwh   1/1   Running   2 (67s ago)   25m
+api-64885d7665-g5cl7   1/1   Running   0             74s
+api-64885d7665-nvw2f   0/1   Running   0             58s
+api-64885d7665-wqc9g   1/1   Running   0             58s
+Pods listed: 6
+
+--- 2026-10-17 01:55:17 ---
+NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 111%/50%   2         6         6          161m
+api-64885d7665-2f5xr   0/1   Running   2 (2m30s ago)   25m
+api-64885d7665-4wxft   0/1   Running   0               104s
+api-64885d7665-dmrwh   1/1   Running   2 (97s ago)     25m
+api-64885d7665-g5cl7   1/1   Running   0               104s
+api-64885d7665-nvw2f   1/1   Running   0               88s
+api-64885d7665-wqc9g   0/1   Running   0               88s
+Pods listed: 6
+
+--- 2026-10-17 01:55:48 ---
+NAME      REFERENCE        TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 58%/50%   2         6         6          161m
+api-64885d7665-2f5xr   1/1   Running   2 (3m1s ago)   26m
+api-64885d7665-4wxft   1/1   Running   1 (30s ago)    2m15s
+api-64885d7665-dmrwh   1/1   Running   2 (2m8s ago)   26m
+api-64885d7665-g5cl7   1/1   Running   0              2m15s
+api-64885d7665-nvw2f   1/1   Running   0              119s
+api-64885d7665-wqc9g   1/1   Running   0              119s
+Pods listed: 6
+
+--- 2026-10-17 01:56:18 ---
+NAME      REFERENCE        TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 58%/50%   2         6         6          162m
+api-64885d7665-2f5xr   1/1   Running   2 (3m31s ago)   26m
+api-64885d7665-4wxft   1/1   Running   1 (60s ago)     2m45s
+api-64885d7665-dmrwh   1/1   Running   2 (2m38s ago)   26m
+api-64885d7665-g5cl7   1/1   Running   0               2m45s
+api-64885d7665-nvw2f   1/1   Running   0               2m29s
+api-64885d7665-wqc9g   1/1   Running   0               2m29s
+Pods listed: 6
+
+--- 2026-10-17 01:56:48 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 8%/50%   2         6         6          162m
+api-64885d7665-2f5xr   1/1   Running   2 (4m2s ago)   27m
+api-64885d7665-4wxft   1/1   Running   1 (91s ago)    3m16s
+api-64885d7665-dmrwh   1/1   Running   2 (3m9s ago)   27m
+api-64885d7665-g5cl7   1/1   Running   0              3m16s
+api-64885d7665-nvw2f   1/1   Running   0              3m
+api-64885d7665-wqc9g   1/1   Running   0              3m
+Pods listed: 6
+
+--- 2026-10-17 01:57:19 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 8%/50%   2         6         6          163m
+api-64885d7665-2f5xr   1/1   Running   2 (4m32s ago)   27m
+api-64885d7665-4wxft   1/1   Running   1 (2m1s ago)    3m46s
+api-64885d7665-dmrwh   1/1   Running   2 (3m39s ago)   27m
+api-64885d7665-g5cl7   1/1   Running   0               3m46s
+api-64885d7665-nvw2f   1/1   Running   0               3m30s
+api-64885d7665-wqc9g   1/1   Running   0               3m30s
+Pods listed: 6
+
+--- 2026-10-17 01:57:49 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         6          163m
+api-64885d7665-2f5xr   1/1   Running   2 (5m3s ago)    28m
+api-64885d7665-4wxft   1/1   Running   1 (2m32s ago)   4m17s
+api-64885d7665-dmrwh   1/1   Running   2 (4m10s ago)   28m
+api-64885d7665-g5cl7   1/1   Running   0               4m17s
+api-64885d7665-nvw2f   1/1   Running   0               4m1s
+api-64885d7665-wqc9g   1/1   Running   0               4m1s
+Pods listed: 6
+
+--- 2026-10-17 01:58:20 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         6          164m
+api-64885d7665-2f5xr   1/1   Running   2 (5m33s ago)   28m
+api-64885d7665-4wxft   1/1   Running   1 (3m2s ago)    4m47s
+api-64885d7665-dmrwh   1/1   Running   2 (4m40s ago)   28m
+api-64885d7665-g5cl7   1/1   Running   0               4m47s
+api-64885d7665-nvw2f   1/1   Running   0               4m31s
+api-64885d7665-wqc9g   1/1   Running   0               4m31s
+Pods listed: 6
+
+--- 2026-10-17 01:58:50 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         6          164m
+api-64885d7665-2f5xr   1/1   Running   2 (6m4s ago)    29m
+api-64885d7665-4wxft   1/1   Running   1 (3m33s ago)   5m18s
+api-64885d7665-dmrwh   1/1   Running   2 (5m11s ago)   29m
+api-64885d7665-g5cl7   1/1   Running   0               5m18s
+api-64885d7665-nvw2f   1/1   Running   0               5m2s
+api-64885d7665-wqc9g   1/1   Running   0               5m2s
+Pods listed: 6
+
+--- 2026-10-17 01:59:21 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         6          165m
+api-64885d7665-2f5xr   1/1   Running   2 (6m35s ago)   29m
+api-64885d7665-4wxft   1/1   Running   1 (4m4s ago)    5m49s
+api-64885d7665-dmrwh   1/1   Running   2 (5m42s ago)   29m
+api-64885d7665-g5cl7   1/1   Running   0               5m49s
+api-64885d7665-nvw2f   1/1   Running   0               5m33s
+api-64885d7665-wqc9g   1/1   Running   0               5m33s
+Pods listed: 6
+
+--- 2026-10-17 01:59:52 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 4%/50%   2         6         6          165m
+api-64885d7665-2f5xr   1/1   Running   2 (7m5s ago)    30m
+api-64885d7665-4wxft   1/1   Running   1 (4m34s ago)   6m19s
+api-64885d7665-dmrwh   1/1   Running   2 (6m12s ago)   30m
+api-64885d7665-g5cl7   1/1   Running   0               6m19s
+api-64885d7665-nvw2f   1/1   Running   0               6m3s
+api-64885d7665-wqc9g   1/1   Running   0               6m3s
+Pods listed: 6
+
+--- 2026-10-17 02:00:22 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 4%/50%   2         6         6          166m
+api-64885d7665-2f5xr   1/1   Running   2 (7m37s ago)   30m
+api-64885d7665-4wxft   1/1   Running   1 (5m6s ago)    6m51s
+api-64885d7665-dmrwh   1/1   Running   2 (6m44s ago)   30m
+api-64885d7665-g5cl7   1/1   Running   0               6m51s
+api-64885d7665-nvw2f   1/1   Running   0               6m35s
+api-64885d7665-wqc9g   1/1   Running   0               6m35s
+Pods listed: 6
+
+--- 2026-10-17 02:00:43 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 5%/50%   2         6         6          166m
+api-64885d7665-2f5xr   1/1   Running   2 (7m56s ago)   31m
+api-64885d7665-4wxft   1/1   Running   1 (5m25s ago)   7m10s
+api-64885d7665-dmrwh   1/1   Running   2 (7m3s ago)    31m
+api-64885d7665-g5cl7   1/1   Running   0               7m10s
+api-64885d7665-nvw2f   1/1   Running   0               6m54s
+api-64885d7665-wqc9g   1/1   Running   0               6m54s
+Pods listed: 6
+
+--- 2026-10-17 02:01:13 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 5%/50%   2         6         6          167m
+api-64885d7665-2f5xr   1/1   Running   2 (8m27s ago)   31m
+api-64885d7665-4wxft   1/1   Running   1 (5m56s ago)   7m41s
+api-64885d7665-dmrwh   1/1   Running   2 (7m34s ago)   31m
+api-64885d7665-g5cl7   1/1   Running   0               7m41s
+api-64885d7665-nvw2f   1/1   Running   0               7m25s
+api-64885d7665-wqc9g   1/1   Running   0               7m25s
+Pods listed: 6
+
+--- 2026-10-17 02:01:44 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 6%/50%   2         6         2          167m
+api-64885d7665-4wxft   1/1   Running   1 (6m27s ago)   8m12s
+api-64885d7665-dmrwh   1/1   Running   2 (8m5s ago)    32m
+Pods listed: 2
+
+--- 2026-10-17 02:02:15 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 6%/50%   2         6         2          168m
+api-64885d7665-4wxft   1/1   Running   1 (6m58s ago)   8m43s
+api-64885d7665-dmrwh   1/1   Running   2 (8m36s ago)   32m
+Pods listed: 2
+
+--- 2026-10-17 02:02:46 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 9%/50%   2         6         2          168m
+api-64885d7665-4wxft   1/1   Running   1 (7m30s ago)   9m15s
+api-64885d7665-dmrwh   1/1   Running   2 (9m8s ago)    33m
+Pods listed: 2
+
+--- 2026-10-17 02:03:19 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 9%/50%   2         6         2          169m
+api-64885d7665-4wxft   1/1   Running   1 (8m1s ago)    9m46s
+api-64885d7665-dmrwh   1/1   Running   2 (9m39s ago)   33m
+Pods listed: 2
+
+--- 2026-10-17 02:03:49 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 6%/50%   2         6         2          169m
+api-64885d7665-4wxft   1/1   Running   1 (8m32s ago)   10m
+api-64885d7665-dmrwh   1/1   Running   2 (10m ago)     34m
+Pods listed: 2
+
+--- 2026-10-17 02:04:20 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 6%/50%   2         6         2          170m
+api-64885d7665-4wxft   1/1   Running   1 (9m3s ago)   10m
+api-64885d7665-dmrwh   1/1   Running   2 (10m ago)    34m
+Pods listed: 2
+
+--- 2026-10-17 02:04:51 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          170m
+api-64885d7665-4wxft   1/1   Running   1 (9m33s ago)   11m
+api-64885d7665-dmrwh   1/1   Running   2 (11m ago)     35m
+Pods listed: 2
+
+--- 2026-10-17 02:05:21 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          171m
+api-64885d7665-4wxft   1/1   Running   1 (10m ago)   11m
+api-64885d7665-dmrwh   1/1   Running   2 (11m ago)   35m
+Pods listed: 2
+
+--- 2026-10-17 02:05:52 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          171m
+api-64885d7665-4wxft   1/1   Running   1 (10m ago)   12m
+api-64885d7665-dmrwh   1/1   Running   2 (12m ago)   36m
+Pods listed: 2
+
+--- 2026-10-17 02:06:22 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          172m
+api-64885d7665-4wxft   1/1   Running   1 (11m ago)   12m
+api-64885d7665-dmrwh   1/1   Running   2 (12m ago)   36m
+Pods listed: 2
+
+--- 2026-10-17 02:06:52 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          172m
+api-64885d7665-4wxft   1/1   Running   1 (11m ago)   13m
+api-64885d7665-dmrwh   1/1   Running   2 (13m ago)   37m
+Pods listed: 2
+
+--- 2026-10-17 02:07:23 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          173m
+api-64885d7665-4wxft   1/1   Running   1 (12m ago)   13m
+api-64885d7665-dmrwh   1/1   Running   2 (13m ago)   37m
+Pods listed: 2
+
+--- 2026-10-17 02:07:53 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          173m
+api-64885d7665-4wxft   1/1   Running   1 (12m ago)   14m
+api-64885d7665-dmrwh   1/1   Running   2 (14m ago)   38m
+Pods listed: 2
+
+--- 2026-10-17 02:08:24 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          174m
+api-64885d7665-4wxft   1/1   Running   1 (13m ago)   14m
+api-64885d7665-dmrwh   1/1   Running   2 (14m ago)   38m
+Pods listed: 2
+
+--- 2026-10-17 02:08:54 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          174m
+api-64885d7665-4wxft   1/1   Running   1 (13m ago)   15m
+api-64885d7665-dmrwh   1/1   Running   2 (15m ago)   39m
+Pods listed: 2
+
+--- 2026-10-17 02:09:25 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          175m
+api-64885d7665-4wxft   1/1   Running   1 (14m ago)   15m
+api-64885d7665-dmrwh   1/1   Running   2 (15m ago)   39m
+Pods listed: 2
+
+--- 2026-10-17 02:09:55 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          175m
+api-64885d7665-4wxft   1/1   Running   1 (14m ago)   16m
+api-64885d7665-dmrwh   1/1   Running   2 (16m ago)   40m
+Pods listed: 2
+
+--- 2026-10-17 02:10:25 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          176m
+api-64885d7665-4wxft   1/1   Running   1 (15m ago)   16m
+api-64885d7665-dmrwh   1/1   Running   2 (16m ago)   41m
+Pods listed: 2
+
+--- 2026-10-17 02:10:56 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          176m
+api-64885d7665-4wxft   1/1   Running   1 (15m ago)   17m
+api-64885d7665-dmrwh   1/1   Running   2 (17m ago)   41m
+Pods listed: 2
+
+--- 2026-10-17 02:11:26 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          177m
+api-64885d7665-4wxft   1/1   Running   1 (16m ago)   17m
+api-64885d7665-dmrwh   1/1   Running   2 (17m ago)   42m
+Pods listed: 2
+
+--- 2026-10-17 02:11:57 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          178m
+api-64885d7665-4wxft   1/1   Running   1 (16m ago)   18m
+api-64885d7665-dmrwh   1/1   Running   2 (18m ago)   42m
+Pods listed: 2
+
+--- 2026-10-17 02:12:27 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          178m
+api-64885d7665-4wxft   1/1   Running   1 (17m ago)   18m
+api-64885d7665-dmrwh   1/1   Running   2 (18m ago)   43m
+Pods listed: 2
+
+--- 2026-10-17 02:12:58 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          179m
+api-64885d7665-4wxft   1/1   Running   1 (17m ago)   19m
+api-64885d7665-dmrwh   1/1   Running   2 (19m ago)   43m
+Pods listed: 2
+
+--- 2026-10-17 02:13:28 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          179m
+api-64885d7665-4wxft   1/1   Running   1 (18m ago)   19m
+api-64885d7665-dmrwh   1/1   Running   2 (19m ago)   44m
+Pods listed: 2
+
+--- 2026-10-17 02:13:59 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          3h
+api-64885d7665-4wxft   1/1   Running   1 (18m ago)   20m
+api-64885d7665-dmrwh   1/1   Running   2 (20m ago)   44m
+Pods listed: 2
+
+--- 2026-10-17 02:19:16 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          3h5m
+api-64885d7665-4wxft   1/1   Running   1 (24m ago)   25m
+api-64885d7665-dmrwh   1/1   Running   2 (25m ago)   49m
+Pods listed: 2
+
+--- 2026-10-17 02:19:54 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          3h5m
+api-64885d7665-4wxft   1/1   Running   1 (24m ago)   26m
+api-64885d7665-dmrwh   1/1   Running   2 (26m ago)   50m
+Pods listed: 2
+
