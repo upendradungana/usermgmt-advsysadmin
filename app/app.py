@@ -9,6 +9,8 @@ app = Flask(__name__)
 _table_ready = False
 
 
+
+
 def get_conn():
     """Open a DB connection; create the table the first time we succeed."""
     global _table_ready
@@ -46,6 +48,10 @@ def run(sql, params=(), fetch="none"):
 
 def to_user(r):
     return {"id": r[0], "name": r[1], "email": r[2]}
+
+@app.get("/")
+def index():
+    return app.send_static_file("index.html")
 
 
 @app.get("/healthz")

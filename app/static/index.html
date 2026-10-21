@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User management</title>
+<style>
+  /* Plain, self-contained page: no external fonts, scripts or images. */
+  :root {
+    --ink: #1b2a2f;
+    --muted: #55666b;
+    --paper: #f7f8f6;
+    --panel: #ffffff;
+    --line: #d5dcd9;
+    --accent: #0f766e;
+    --accent-ink: #ffffff;
+    --danger: #b42318;
+    --ok-bg: #e6f4ef;
+    --err-bg: #fdecea;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+  h1 { font-size: 1.9rem; margin: 0 0 .25rem; text-align: center; }
+  .lead { margin: 0 0 1.75rem; text-align: center; color: var(--muted); }
+  h2 { font-size: 1.2rem; margin: 0 0 1rem; }
+
+  .menu { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; }
+  button {
+    font: inherit; cursor: pointer; border: 1px solid transparent; border-radius: 6px;
+    padding: .55rem 1.1rem; background: var(--accent); color: var(--accent-ink);
+  }
+  button.big { padding: 1rem 2.25rem; font-size: 1.1rem; font-weight: 600; min-width: 10rem; }
+  button.quiet { background: transparent; color: var(--ink); border-color: var(--line); }
+  button.danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+  button.small { padding: .3rem .7rem; font-size: .9rem; }
+  button:hover { filter: brightness(1.08); }
+  button:focus-visible, input:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 2px; }
+
+  #msg { min-height: 1.5rem; margin: 0 0 1rem; padding: 0; border-radius: 6px; }
+  #msg.ok, #msg.error { padding: .6rem .9rem; }
+  #msg.ok { background: var(--ok-bg); }
+  #msg.error { background: var(--err-bg); color: var(--danger); }
+
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 1.25rem; }
+  label { display: block; margin-bottom: 1rem; font-weight: 600; }
+  input {
+    display: block; width: 100%; margin-top: .35rem; padding: .55rem .7rem;
+    font: inherit; font-weight: 400; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink);
+  }
+  .row { display: flex; gap: .75rem; }
+
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { color: var(--muted); font-weight: 600; font-size: .9rem; }
+  td.actions { white-space: nowrap; }
+  td.actions button + button { margin-left: .4rem; }
+  #empty { color: var(--muted); margin: .5rem 0 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>User management</h1>
+  <p class="lead">Add people, look them up, change their details or remove them.</p>
+
+  <div class="menu">
+    <button type="button" class="big" id="btn-add">Add user</button>
+    <button type="button" class="big" id="btn-view">View users</button>
+  </div>
+
+  <div id="msg" role="status" aria-live="polite"></div>
+
+  <section id="form-panel" class="panel" hidden>
+    <h2 id="form-title">Add user</h2>
+    <form id="user-form">
+      <label>Name
+        <input id="name" name="name" autocomplete="off" required>
+      </label>
+      <label>Email
+        <input id="email" name="email" type="email" autocomplete="off" required>
+      </label>
+      <div class="row">
+        <button type="submit" id="btn-save">Save user</button>
+        <button type="button" class="quiet" id="btn-cancel">Cancel</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="list-panel" class="panel" hidden>
+    <h2>Users</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p id="empty" hidden>No users yet. Choose Add user to create the first one.</p>
+  </section>
+</main>
+
+<script>
+  // All requests use relative paths, so the page works through the Ingress
+  // host name and through kubectl port-forward alike.
+  var editingId = null;
+
+  function $(id) { return document.getElementById(id); }
+
+  function showMessage(text, isError) {
+    var box = $("msg");
+    box.textContent = text;
+    box.className = isError ? "error" : "ok";
+  }
+
+  function clearMessage() {
+    var box = $("msg");
+    box.textContent = "";
+    box.className = "";
+  }
+
+  // Calls the API and returns the parsed JSON (or null when there is no body).
+  // Throws an Error whose message is the API's own error text when it fails.
+  async function api(path, options) {
+    var res;
+    try {
+      res = await fetch(path, options);
+    } catch (e) {
+      throw new Error("Cannot reach the server. Check that the cluster and tunnel are running.");
+    }
+    var text = await res.text();
+    var data = null;
+    if (text) {
+      try { data = JSON.parse(text); } catch (e) { data = null; }
+    }
+    if (!res.ok) {
+      throw new Error((data && data.error) ? data.error : "Request failed (" + res.status + ").");
+    }
+    return data;
+  }
+
+  function openForm(user) {
+    editingId = user ? user.id : null;
+    $("form-title").textContent = user ? "Edit user " + user.id : "Add user";
+    $("btn-save").textContent = user ? "Save changes" : "Save user";
+    $("name").value = user ? user.name : "";
+    $("email").value = user ? user.email : "";
+    $("list-panel").hidden = true;
+    $("form-panel").hidden = false;
+    $("name").focus();
+  }
+
+  function closeForm() {
+    editingId = null;
+    $("form-panel").hidden = true;
+  }
+
+  function makeButton(label, className, onClick) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = label;
+    b.className = className;
+    b.addEventListener("click", onClick);
+    return b;
+  }
+
+  async function loadUsers() {
+    closeForm();
+    $("list-panel").hidden = false;
+    try {
+      var users = await api("/users");
+      var body = $("rows");
+      body.innerHTML = "";
+      $("empty").hidden = users.length > 0;
+      users.forEach(function (u) {
+        var tr = document.createElement("tr");
+        [u.id, u.name, u.email].forEach(function (value) {
+          var td = document.createElement("td");
+          td.textContent = value;   // textContent keeps user input from being run as HTML
+          tr.appendChild(td);
+        });
+        var actions = document.createElement("td");
+        actions.className = "actions";
+        actions.appendChild(makeButton("Edit", "quiet small", function () { clearMessage(); openForm(u); }));
+        actions.appendChild(makeButton("Delete", "danger small", function () { removeUser(u); }));
+        tr.appendChild(actions);
+        body.appendChild(tr);
+      });
+    } catch (e) {
+      showMessage(e.message, true);
+    }
+  }
+
+  async function removeUser(u) {
+    if (!window.confirm("Delete " + u.name + " (" + u.email + ")? This cannot be undone.")) { return; }
+    try {
+      await api("/users/" + u.id, { method: "DELETE" });
+      showMessage("Deleted " + u.name + ".", false);
+      await loadUsers();
+    } catch (e) {
+      showMessage(e.message, true);
+    }
+  }
+
+  $("btn-add").addEventListener("click", function () { clearMessage(); openForm(null); });
+  $("btn-view").addEventListener("click", function () { clearMessage(); loadUsers(); });
+  $("btn-cancel").addEventListener("click", function () { clearMessage(); closeForm(); });
+
+  $("user-form").addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    var wasEdit = editingId !== null;
+    var payload = JSON.stringify({ name: $("name").value.trim(), email: $("email").value.trim() });
+    try {
+      await api(wasEdit ? "/users/" + editingId : "/users", {
+        method: wasEdit ? "PUT" : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload
+      });
+      showMessage(wasEdit ? "Changes saved." : "User added.", false);
+      await loadUsers();
+    } catch (e) {
+      showMessage(e.message, true);   // the form stays open so nothing typed is lost
+    }
+  });
+</script>
+</body>
+</html>
