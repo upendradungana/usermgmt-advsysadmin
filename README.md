@@ -9,7 +9,8 @@ College of Science and Technology, Royal University of Bhutan
 | Namespace | `usermgmt-02230158` |
 | Host name | `usermgmt-02230158.local` |
 | Cluster | minikube (Docker driver), Ingress controller: **ingress-nginx** (minikube `ingress` add-on) |
-| Application image | `usermgmt-api:1.0` (built locally, loaded into the cluster, no registry) |
+| Application image | `usermgmt-api:1.1` (built locally, loaded into the cluster, no registry) |
+| Web UI | `http://usermgmt-02230158.local/` (a simple page served by the API container) |
 
 **How to read this file**
 
@@ -26,7 +27,9 @@ Conventions: every command is in a copyable block. The shell is named above each
 
 ### 1.1 What this project is
 
-An internal **user management service**: a small REST API that creates, lists, updates and deletes user records. It must keep its data when Pods restart, be reachable at a friendly URL, and cope with busy periods without manual intervention.
+An internal **user management service**: a small REST API that creates, lists, updates and deletes user records, with a simple web page on top of it (two buttons, **Add user** and **View users**, where each user can be edited or deleted). It must keep its data when Pods restart, be reachable at a friendly URL, and cope with busy periods without manual intervention.
+
+The web page is one static HTML file served by the same API container at `/`. It calls the API's own endpoints, so there is no extra Deployment, Service or Ingress rule.
 
 ```text
 Browser / curl
@@ -55,14 +58,14 @@ metrics-server (kube-system) feeds CPU data to the HPA and the VPA.
 |---|---|
 | M1 Cluster and platform | minikube cluster (2 CPUs, 4 GB), ingress-nginx and metrics-server add-ons, VPA components, namespace from a manifest, default StorageClass identified |
 | M2 Stateful database | PostgreSQL 16 as a StatefulSet (`postgres-0`), headless Service, Secret for credentials, `volumeClaimTemplates` (1 Gi PVC), requests and limits, persistence test |
-| M3 Application | Flask REST API (7 endpoints), Dockerfile, versioned image `usermgmt-api:1.0`, ConfigMap + Secret, liveness and readiness probes, requests and limits, 2 replicas, ClusterIP Service |
+| M3 Application | Flask REST API (7 endpoints) plus a simple web UI at `/`, Dockerfile, versioned image `usermgmt-api:1.1`, ConfigMap + Secret, liveness and readiness probes, requests and limits, 2 replicas, ClusterIP Service |
 | M4 Ingress | Ingress rule for `usermgmt-02230158.local`, hosts-file entry, `minikube tunnel`, wrong-host test |
 | M5 Autoscaling | HPA (`autoscaling/v2`, 2-6 replicas, 50% CPU), VPA on the database in `Off` mode, load test with `hey`, 30-second timeline in `hpa-log.txt` |
 | M6 Report and demo | Report, architecture diagram, troubleshooting account, this README |
 
 ### 1.3 Topics covered
 
-Namespaces, StorageClass / PV / PVC, Secrets, ConfigMaps, StatefulSets, headless Services, Deployments and ReplicaSets, liveness and readiness probes, resource requests and limits, ClusterIP Services, Ingress and Ingress controllers, host-based routing, hosts file and `minikube tunnel`, metrics-server, HorizontalPodAutoscaler (v2), VerticalPodAutoscaler (`Off` mode) and why HPA and VPA must not act on the same workload, loading local images without a registry, load testing, troubleshooting with `describe`, events and logs, declarative deployment with `kubectl apply -f`.
+Namespaces, StorageClass / PV / PVC, Secrets, ConfigMaps, StatefulSets, headless Services, Deployments and ReplicaSets, liveness and readiness probes, resource requests and limits, ClusterIP Services, Ingress and Ingress controllers, host-based routing, hosts file and `minikube tunnel`, metrics-server, HorizontalPodAutoscaler (v2), VerticalPodAutoscaler (`Off` mode) and why HPA and VPA must not act on the same workload, loading local images without a registry, load testing, troubleshooting with `describe`, events and logs, declarative deployment with `kubectl apply -f`, releasing a new image version with a rollout, and serving a small web UI from the API container.
 
 ### 1.4 File structure
 
@@ -72,8 +75,10 @@ usermgmt/
 ├── install.ps1                        PowerShell helper used during installation/setup
 ├── hpa-log.txt                        30-second HPA and Pod-count timeline recorded during the load test
 ├── app/
-│   ├── app.py                         Flask REST API (users CRUD, /healthz, /ready)
-│   ├── Dockerfile                     builds usermgmt-api:1.0 (runs as non-root with gunicorn)
+│   ├── app.py                         Flask REST API (users CRUD, /healthz, /ready) and the route that serves the UI at /
+│   ├── static/
+│   │   └── index.html                 the web UI (Add user, View users, edit, delete); plain HTML, CSS and JavaScript
+│   ├── Dockerfile                     builds usermgmt-api:1.1 (copies app.py and static/, runs as non-root with gunicorn)
 │   └── requirements.txt               pinned Python dependencies
 └── k8s/                               numbered in the order they must be applied
     ├── 00-namespace.yaml              Namespace usermgmt-02230158
@@ -326,8 +331,8 @@ All commands run from the repository root in **PowerShell**, with the cluster ru
 **What happens:** builds and loads the image, then applies every manifest in numeric order. The milestone-by-milestone steps below explain each part and show the evidence.
 
 ```powershell
-docker build -t usermgmt-api:1.0 ./app
-minikube image load usermgmt-api:1.0
+docker build -t usermgmt-api:1.1 ./app
+minikube image load usermgmt-api:1.1
 kubectl apply -f k8s/
 ```
 
@@ -501,14 +506,14 @@ kubectl exec -n usermgmt-02230158 postgres-0 -- psql -U appuser -d usersdb -c "D
 *What happens:* the image is built on your Docker, then copied into the minikube node (there is no registry). The Deployment uses `imagePullPolicy: IfNotPresent` so Kubernetes never tries to download it.
 
 ```powershell
-docker build -t usermgmt-api:1.0 ./app
-minikube image load usermgmt-api:1.0
+docker build -t usermgmt-api:1.1 ./app
+minikube image load usermgmt-api:1.1
 minikube image ls | Select-String usermgmt
 ```
 
-Expected: the build ends with a "naming to docker.io/library/usermgmt-api:1.0" line, and the last command prints `docker.io/library/usermgmt-api:1.0`.
+Expected: the build ends with a "naming to docker.io/library/usermgmt-api:1.1" line, and the last command prints `docker.io/library/usermgmt-api:1.1`.
 
-If you rebuild with the same tag, remove the old copy first: `minikube image rm usermgmt-api:1.0`
+If you rebuild with the same tag, remove the old copy first: `minikube image rm usermgmt-api:1.1`
 
 **Step M3.2 Apply the ConfigMap, Deployment and Service**
 
@@ -582,7 +587,7 @@ Expected status codes, in order:
 | `DELETE /users/{id}` | `204 NO CONTENT` |
 | `GET /users/{id}` again | `404 NOT FOUND` |
 
-`GET /` returns `404` by design: the API has no root page (only `/users`, `/users/{id}`, `/healthz`, `/ready`).
+`GET /` returns the web page (HTML), not JSON. It is not one of the seven API endpoints and is covered in Step M3.5.
 
 If you ran this test before, the first `POST` can return `409` because the user already exists. Use another email, or delete the old user first.
 
@@ -609,6 +614,22 @@ kubectl get pods -n usermgmt-02230158 -w
 ```
 
 Expected: `postgres-0` returns to `1/1 Running`, then the `api` Pods return to `1/1`. Press `Ctrl+C`. The users created earlier are still there (the PVC was never touched).
+
+**Step M3.5 Web UI (simple front end)**
+
+*What happens:* the API container also serves one static page at `/`. The page has two buttons. **Add user** opens a form (name and email). **View users** lists every user with **Edit** and **Delete** buttons. The page only calls the API's own endpoints (`GET/POST /users`, `PUT/DELETE /users/{id}`), so everything above still works unchanged. A duplicate email shows the API's message ("email already exists") and keeps the form open.
+
+Open it with the port-forward from Step M3.3 running:
+
+```powershell
+curl.exe -i http://localhost:8080/
+```
+
+Expected: `200 OK` with `Content-Type: text/html` and a page whose title is `User management`. Then open `http://localhost:8080/` in a browser. After Milestone 4 you can open `http://usermgmt-02230158.local/` instead, with `minikube tunnel` running.
+
+Try in the browser: **Add user**, fill the form, **Save user** (the list appears with the new user); **Edit**, change the name, **Save changes**; **Delete**, confirm. Reload the page and the users are still there, because they live in PostgreSQL.
+
+The UI has no login, so anyone who can reach the URL can add, change or delete users. That is fine for this lab but not for real use.
 
 ---
 
@@ -810,8 +831,8 @@ kubectl delete namespace usermgmt-02230158
 Then repeat Section 1 (cluster, add-ons, VPA) on a clean cluster if you want the full test (`minikube delete`, then `minikube start ...`), followed by:
 
 ```powershell
-docker build -t usermgmt-api:1.0 ./app
-minikube image load usermgmt-api:1.0
+docker build -t usermgmt-api:1.1 ./app
+minikube image load usermgmt-api:1.1
 kubectl apply -f k8s/
 kubectl get pods -n usermgmt-02230158
 ```
@@ -877,11 +898,12 @@ minikube image ls | Select-String usermgmt
 Look for:
 
 - `api` `2/2`, two `1/1 Running` Pods, `service/api` of type `ClusterIP`.
-- Image `usermgmt-api:1.0` (a versioned tag), 2 replicas, liveness on `/healthz`, readiness on `/ready`, and CPU/memory requests and limits.
+- Image `usermgmt-api:1.1` (a versioned tag), 2 replicas, liveness on `/healthz`, readiness on `/ready`, and CPU/memory requests and limits.
 - `DB_HOST=postgres`, `DB_PORT=5432`, `DB_NAME=usersdb`, `DB_USER=appuser`. Do **not** print or screenshot `DB_PASSWORD`.
 - The password comes from `secretKeyRef` (the `:latest` search prints nothing, so no `latest` tag).
 - The CRUD results: Step M3.3 (all endpoints, with the port-forward window visible).
 - The readiness test: Step M3.4 (`api` Pods `0/1` with `RESTARTS` unchanged while the database is down).
+- The web UI: Step M3.5 (screenshots of the main screen with the two buttons, the user list, and an edit or delete).
 
 ### Evidence M4: Ingress
 
@@ -957,12 +979,18 @@ kubectl get events -n usermgmt-02230158 --sort-by=.lastTimestamp
 ```powershell
 kubectl logs deploy/api -n usermgmt-02230158 --tail=30
 kubectl logs postgres-0 -n usermgmt-02230158 --tail=30
-kubectl logs <pod-name> -n usermgmt-02230158 --previous
-kubectl describe pod <pod-name> -n usermgmt-02230158
 kubectl logs -n ingress-nginx deploy/ingress-nginx-controller --tail=30
 ```
 
-`--previous` shows the log of a container before it restarted. Replace `<pod-name>` with a name from `kubectl get pods`.
+To inspect one `api` Pod, store its name in a variable first (this avoids typing the generated name):
+
+```powershell
+$pod = kubectl get pods -n usermgmt-02230158 -l app=api -o jsonpath="{.items[0].metadata.name}"
+kubectl describe pod $pod -n usermgmt-02230158
+kubectl logs $pod -n usermgmt-02230158 --previous
+```
+
+`--previous` shows the log of the container before it restarted. It only works for a container that has restarted, otherwise it reports that no previous container was found.
 
 ### 4.3 Look inside the database
 
@@ -979,7 +1007,32 @@ kubectl rollout status deployment/api -n usermgmt-02230158
 kubectl get hpa api-hpa -n usermgmt-02230158 -w
 ```
 
-### 4.5 After a reboot, sleep or Docker restart
+### 4.5 Release a new version of the app (for example after editing the UI)
+
+*What happens:* Kubernetes only replaces running Pods when the Pod template changes, so a new image needs a new tag. Build and load it, change the tag in `k8s/05-api-deployment.yaml` (the `image:` line), apply, and wait for the rollout. The new Pods must pass `/ready` before the old ones are removed.
+
+```powershell
+docker build -t usermgmt-api:1.2 ./app
+minikube image load usermgmt-api:1.2
+```
+
+Edit the `image:` line to `usermgmt-api:1.2`, then:
+
+```powershell
+kubectl apply -f k8s/05-api-deployment.yaml
+kubectl rollout status deployment/api -n usermgmt-02230158
+kubectl rollout history deployment/api -n usermgmt-02230158
+```
+
+To go back to the previous version:
+
+```powershell
+kubectl rollout undo deployment/api -n usermgmt-02230158
+```
+
+After an undo, make the manifest's `image:` line match the running version again, so the repository and the cluster agree.
+
+### 4.6 After a reboot, sleep or Docker restart
 
 ```powershell
 minikube status
@@ -990,7 +1043,7 @@ kubectl get pods -A
 
 Use plain `minikube start` (not `delete`): it keeps the namespace, data, add-ons and loaded images. Restart `minikube tunnel` in an Administrator window afterwards.
 
-### 4.6 Stop and clean up
+### 4.7 Stop and clean up
 
 ```powershell
 minikube stop
@@ -1014,14 +1067,14 @@ Optionally remove the hosts-file line (Administrator PowerShell):
 (Get-Content C:\Windows\System32\drivers\etc\hosts) | Where-Object { $_ -notmatch "usermgmt-02230158.local" } | Set-Content C:\Windows\System32\drivers\etc\hosts
 ```
 
-### 4.7 Save the work
+### 4.8 Save the work
 
 ```powershell
 git add -A
 git commit -m "Update usermgmt manifests, README and logs"
 ```
 
-### 4.8 Common problems and how they were diagnosed
+### 4.9 Common problems and how they were diagnosed
 
 | Symptom | Check | Cause and fix |
 |---|---|---|
@@ -1029,14 +1082,15 @@ git commit -m "Update usermgmt manifests, README and logs"
 | Ingress controller stuck `ContainerCreating`; event `secret "ingress-nginx-admission" not found` | `kubectl get events -n ingress-nginx --sort-by=.lastTimestamp`, `kubectl get jobs -n ingress-nginx` | The controller mounts a certificate Secret that the `admission-create` Job makes. That Job was stuck pulling its image. Pre-pull the images (Section 1.7), delete the Pods, enable the add-on again. |
 | `vpa-up.sh` prints `fatal: invalid reference: vertical-pod-autoscaler-1.8.0` | `git tag` | A shallow clone has no tags. Run `git fetch --depth 1 origin tag vertical-pod-autoscaler-1.8.0` (Section 1.8). |
 | `vpa-up.sh` prints `This name is not in that format: 'C:/Program Files/Git/CN=...'` | | Git Bash rewrites `/CN=` as a Windows path. Run `export MSYS_NO_PATHCONV=1` first (Section 1.8). |
-| `vpa-*` Pod `ContainerCreating` or `ImagePullBackOff` | `kubectl describe pod -n kube-system <vpa-pod>` | Slow or stalled registry download. Pre-pull with `crictl` (Section 1.8). |
-| `ErrImagePull` / `ErrImageNeverPull` on `api` | `kubectl describe pod <api-pod> -n usermgmt-02230158` | The image is not in the node. Run `minikube image load usermgmt-api:1.0`. |
+| `vpa-*` Pod `ContainerCreating` or `ImagePullBackOff` | `kubectl get events -n kube-system --sort-by=.lastTimestamp` | Slow or stalled registry download. Pre-pull with `crictl` (Section 1.8). |
+| `ErrImagePull` / `ErrImageNeverPull` on `api` | `kubectl describe pod -n usermgmt-02230158 -l app=api` | The image is not in the node. Run `minikube image load usermgmt-api:1.1`. |
 | `400 name and email are required` from PowerShell `curl.exe` | | PowerShell strips the quotes in inline JSON. Write the JSON to a file and use `--data-binary "@file.json"` (Step M3.3), or use `Invoke-RestMethod`. |
-| `GET /` returns "Not Found" | | Expected. The API has no root page. Use `/users`. |
+| `GET /` returns "Not Found" instead of the web page | `kubectl describe deployment api -n usermgmt-02230158 \| Select-String "Image:"` | The old image (1.0) is still running, or `static/` was not copied into the image. Check the image tag shows `usermgmt-api:1.1` and the Dockerfile has `COPY static ./static`. Rebuild and redeploy as in Section 4.5. |
 | `no such host` / `Could not resolve host` | `Select-String "usermgmt-02230158" C:\Windows\System32\drivers\etc\hosts` | Hosts-file line missing, or `<sid>` was typed literally instead of `02230158`. |
 | Connection refused or timeout on `usermgmt-02230158.local` | | `minikube tunnel` is not running (or not as Administrator). Start it (Step M4.3). |
 | HPA `TARGETS` shows `<unknown>` | `kubectl top pods -n usermgmt-02230158` | metrics-server is not ready yet, or the Pods have no CPU request. Wait a minute, or check Section 1.7 and 1.9. |
-| Many `503` or `500` during the load test | `kubectl top pods -n usermgmt-02230158`, `kubectl describe pod <api-pod> -n usermgmt-02230158` | The database is near its CPU limit, and slow responses can fail the probes while new Pods start. This is what the VPA recommendation for the database is about. |
+| Pods flip between `1/1` and `0/1`; events show `Readiness probe failed ... timed out after 1s`; HPA events show `the server is currently unable to handle the request (get pods.metrics.k8s.io)`; Ingress controller logs `does not have any active Endpoint` | `kubectl top pods -A --sort-by=cpu`, `docker stats --no-stream`, `kubectl get events -n usermgmt-02230158 --sort-by=.lastTimestamp` | The node is short of CPU, so 1-second probes and metrics-server time out. Close heavy programs, give Docker Desktop more CPUs, or restart minikube with more CPUs (`minikube stop`, then `minikube start --cpus=4 --memory=4096`). Raising `timeoutSeconds` on the probes also helps. |
+| Many `503` or `500` during the load test | `kubectl top pods -n usermgmt-02230158`, `kubectl describe pod -n usermgmt-02230158 -l app=api` | The database is near its CPU limit, and slow responses can fail the probes while new Pods start. This is what the VPA recommendation for the database is about. |
 
 ---
 
