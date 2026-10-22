@@ -1,466 +1,137 @@
---- 2026-10-22 02:34:28 ---
+--- 2026-10-22 11:08:48 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (17m ago)   8h
+api-74855f9cfd-gmmnx   1/1   Running   1 (17m ago)   8h
+Pods listed: 2
+
+--- 2026-10-22 11:09:18 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (17m ago)   8h
+api-74855f9cfd-gmmnx   1/1   Running   1 (17m ago)   8h
+Pods listed: 2
+
+--- 2026-10-22 11:09:49 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (18m ago)   8h
+api-74855f9cfd-gmmnx   1/1   Running   1 (18m ago)   8h
+Pods listed: 2
+
+--- 2026-10-22 11:10:19 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (18m ago)   8h
+api-74855f9cfd-gmmnx   1/1   Running   1 (18m ago)   8h
+Pods listed: 2
+
+--- 2026-10-22 11:10:49 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         2          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (19m ago)   8h
+api-74855f9cfd-gmmnx   1/1   Running   1 (19m ago)   8h
+Pods listed: 2
+
+--- 2026-10-22 11:11:19 ---
 NAME      REFERENCE        TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 10%/50%   2         6         2          27m
-api-74855f9cfd-5lj68   1/1   Running   0     27m
-api-74855f9cfd-whmqk   1/1   Running   0     27m
+api-hpa   Deployment/api   cpu: 52%/50%   2         6         2          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (19m ago)   8h
+api-74855f9cfd-gmmnx   1/1   Running   1 (19m ago)   8h
 Pods listed: 2
 
---- 2026-10-22 02:34:59 ---
+--- 2026-10-22 11:11:49 ---
 NAME      REFERENCE        TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 10%/50%   2         6         2          28m
-api-74855f9cfd-5lj68   1/1   Running   0     28m
-api-74855f9cfd-whmqk   1/1   Running   0     28m
+api-hpa   Deployment/api   cpu: 52%/50%   2         6         2          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (20m ago)   8h
+api-74855f9cfd-gmmnx   1/1   Running   1 (20m ago)   8h
 Pods listed: 2
 
---- 2026-10-22 02:35:32 ---
+--- 2026-10-22 11:12:20 ---
+NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 187%/50%   2         6         4          9h
+api-74855f9cfd-7wkr4   0/1   Running   1 (20m ago)   8h
+api-74855f9cfd-bg5qb   1/1   Running   0             23s
+api-74855f9cfd-dqn7z   0/1   Running   0             8s
+api-74855f9cfd-gmmnx   1/1   Running   1 (20m ago)   8h
+api-74855f9cfd-r6gbm   1/1   Running   0             23s
+api-74855f9cfd-vdbkp   1/1   Running   0             8s
+Pods listed: 6
+
+--- 2026-10-22 11:12:50 ---
+NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 187%/50%   2         6         6          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (21m ago)   8h
+api-74855f9cfd-bg5qb   1/1   Running   0             53s
+api-74855f9cfd-dqn7z   0/1   Running   0             38s
+api-74855f9cfd-gmmnx   1/1   Running   1 (21m ago)   8h
+api-74855f9cfd-r6gbm   0/1   Running   0             53s
+api-74855f9cfd-vdbkp   1/1   Running   0             38s
+Pods listed: 6
+
+--- 2026-10-22 11:13:20 ---
+NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 126%/50%   2         6         6          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (21m ago)   8h
+api-74855f9cfd-bg5qb   0/1   Running   0             83s
+api-74855f9cfd-dqn7z   0/1   Running   0             68s
+api-74855f9cfd-gmmnx   1/1   Running   1 (21m ago)   8h
+api-74855f9cfd-r6gbm   1/1   Running   0             83s
+api-74855f9cfd-vdbkp   1/1   Running   0             68s
+Pods listed: 6
+
+--- 2026-10-22 11:13:50 ---
+NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 126%/50%   2         6         6          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (22m ago)   8h
+api-74855f9cfd-bg5qb   1/1   Running   0             114s
+api-74855f9cfd-dqn7z   1/1   Running   0             99s
+api-74855f9cfd-gmmnx   1/1   Running   1 (22m ago)   8h
+api-74855f9cfd-r6gbm   1/1   Running   0             114s
+api-74855f9cfd-vdbkp   1/1   Running   0             99s
+Pods listed: 6
+
+--- 2026-10-22 11:14:21 ---
 NAME      REFERENCE        TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 10%/50%   2         6         2          28m
-api-74855f9cfd-5lj68   1/1   Running   0     28m
-api-74855f9cfd-whmqk   1/1   Running   0     28m
-Pods listed: 2
+api-hpa   Deployment/api   cpu: 44%/50%   2         6         6          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (22m ago)   8h
+api-74855f9cfd-bg5qb   1/1   Running   0             2m24s
+api-74855f9cfd-dqn7z   1/1   Running   0             2m9s
+api-74855f9cfd-gmmnx   1/1   Running   1 (22m ago)   8h
+api-74855f9cfd-r6gbm   1/1   Running   0             2m24s
+api-74855f9cfd-vdbkp   1/1   Running   0             2m9s
+Pods listed: 6
 
---- 2026-10-22 02:36:02 ---
+--- 2026-10-22 11:14:51 ---
 NAME      REFERENCE        TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 10%/50%   2         6         2          29m
-api-74855f9cfd-5lj68   1/1   Running   0     29m
-api-74855f9cfd-whmqk   1/1   Running   0     29m
-Pods listed: 2
-
---- 2026-10-22 02:36:33 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          29m
-api-74855f9cfd-5lj68   1/1   Running   0     29m
-api-74855f9cfd-whmqk   1/1   Running   0     29m
-Pods listed: 2
-
---- 2026-10-22 02:37:03 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          30m
-api-74855f9cfd-5lj68   1/1   Running   0     30m
-api-74855f9cfd-whmqk   1/1   Running   0     30m
-Pods listed: 2
-
---- 2026-10-22 02:37:33 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          30m
-api-74855f9cfd-5lj68   1/1   Running   0     30m
-api-74855f9cfd-whmqk   1/1   Running   0     30m
-Pods listed: 2
-
---- 2026-10-22 02:38:04 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          31m
-api-74855f9cfd-5lj68   1/1   Running   0     31m
-api-74855f9cfd-whmqk   1/1   Running   0     31m
-Pods listed: 2
-
---- 2026-10-22 02:38:34 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          31m
-api-74855f9cfd-5lj68   1/1   Running   0     31m
-api-74855f9cfd-whmqk   1/1   Running   0     31m
-Pods listed: 2
-
---- 2026-10-22 02:39:05 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          32m
-api-74855f9cfd-5lj68   1/1   Running   0     32m
-api-74855f9cfd-whmqk   1/1   Running   0     32m
-Pods listed: 2
-
---- 2026-10-22 02:39:35 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          32m
-api-74855f9cfd-5lj68   1/1   Running   0     33m
-api-74855f9cfd-whmqk   1/1   Running   0     33m
-Pods listed: 2
-
---- 2026-10-22 02:40:06 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          33m
-api-74855f9cfd-5lj68   1/1   Running   0     33m
-api-74855f9cfd-whmqk   1/1   Running   0     33m
-Pods listed: 2
-
---- 2026-10-22 02:40:36 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          33m
-api-74855f9cfd-5lj68   1/1   Running   0     34m
-api-74855f9cfd-whmqk   1/1   Running   0     34m
-Pods listed: 2
-
---- 2026-10-22 02:41:07 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          34m
-api-74855f9cfd-5lj68   1/1   Running   0     34m
-api-74855f9cfd-whmqk   1/1   Running   0     34m
-Pods listed: 2
-
---- 2026-10-22 02:41:37 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          34m
-api-74855f9cfd-5lj68   1/1   Running   0     35m
-api-74855f9cfd-whmqk   1/1   Running   0     35m
-Pods listed: 2
-
---- 2026-10-22 02:42:08 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          35m
-api-74855f9cfd-5lj68   1/1   Running   0     35m
-api-74855f9cfd-whmqk   1/1   Running   0     35m
-Pods listed: 2
-
---- 2026-10-22 02:42:38 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          36m
-api-74855f9cfd-5lj68   1/1   Running   0     36m
-api-74855f9cfd-whmqk   1/1   Running   0     36m
-Pods listed: 2
-
---- 2026-10-22 02:43:09 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          36m
-api-74855f9cfd-5lj68   1/1   Running   0     36m
-api-74855f9cfd-whmqk   1/1   Running   0     36m
-Pods listed: 2
-
---- 2026-10-22 02:43:39 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          37m
-api-74855f9cfd-5lj68   1/1   Running   0     37m
-api-74855f9cfd-whmqk   1/1   Running   0     37m
-Pods listed: 2
-
---- 2026-10-22 02:44:10 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          37m
-api-74855f9cfd-5lj68   1/1   Running   0     37m
-api-74855f9cfd-whmqk   1/1   Running   0     37m
-Pods listed: 2
-
---- 2026-10-22 02:44:41 ---
-NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 102%/50%   2         6         2          38m
-api-74855f9cfd-5lj68   1/1   Running   1 (29s ago)   38m
-api-74855f9cfd-whmqk   1/1   Running   0             38m
-Pods listed: 2
-
---- 2026-10-22 02:45:12 ---
-NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 102%/50%   2         6         2          38m
-api-74855f9cfd-5lj68   0/1   Running   1 (59s ago)   38m
-api-74855f9cfd-whmqk   1/1   Running   0             38m
-Pods listed: 2
-
---- 2026-10-22 02:45:42 ---
-NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 184%/50%   2         6         4          39m
-api-74855f9cfd-5lj68   0/1   Running             1 (90s ago)   39m
-api-74855f9cfd-7wkr4   1/1   Running             0             16s
-api-74855f9cfd-fg5ng   0/1   ContainerCreating   0             1s
-api-74855f9cfd-gmmnx   0/1   Pending             0             0s
-api-74855f9cfd-lht7c   1/1   Running             0             16s
-api-74855f9cfd-whmqk   1/1   Running             0             39m
+api-hpa   Deployment/api   cpu: 44%/50%   2         6         6          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (23m ago)   8h
+api-74855f9cfd-bg5qb   1/1   Running   0             2m54s
+api-74855f9cfd-dqn7z   1/1   Running   0             2m39s
+api-74855f9cfd-gmmnx   1/1   Running   1 (23m ago)   8h
+api-74855f9cfd-r6gbm   1/1   Running   0             2m54s
+api-74855f9cfd-vdbkp   1/1   Running   0             2m39s
 Pods listed: 6
 
---- 2026-10-22 02:46:13 ---
-NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 184%/50%   2         6         6          39m
-api-74855f9cfd-5lj68   0/1   Running   1 (2m1s ago)   39m
-api-74855f9cfd-7wkr4   1/1   Running   0              47s
-api-74855f9cfd-fg5ng   0/1   Running   0              32s
-api-74855f9cfd-gmmnx   1/1   Running   0              31s
-api-74855f9cfd-lht7c   0/1   Running   0              47s
-api-74855f9cfd-whmqk   1/1   Running   0              39m
+--- 2026-10-22 11:15:21 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         6          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (23m ago)   8h
+api-74855f9cfd-bg5qb   1/1   Running   0             3m24s
+api-74855f9cfd-dqn7z   1/1   Running   0             3m9s
+api-74855f9cfd-gmmnx   1/1   Running   1 (23m ago)   8h
+api-74855f9cfd-r6gbm   1/1   Running   0             3m24s
+api-74855f9cfd-vdbkp   1/1   Running   0             3m9s
 Pods listed: 6
 
---- 2026-10-22 02:46:44 ---
-NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 122%/50%   2         6         6          40m
-api-74855f9cfd-5lj68   1/1   Running   1 (2m32s ago)   40m
-api-74855f9cfd-7wkr4   1/1   Running   0               78s
-api-74855f9cfd-fg5ng   0/1   Running   0               63s
-api-74855f9cfd-gmmnx   0/1   Running   0               62s
-api-74855f9cfd-lht7c   0/1   Running   0               78s
-api-74855f9cfd-whmqk   1/1   Running   0               40m
+--- 2026-10-22 11:15:51 ---
+NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+api-hpa   Deployment/api   cpu: 2%/50%   2         6         6          9h
+api-74855f9cfd-7wkr4   1/1   Running   1 (24m ago)   8h
+api-74855f9cfd-bg5qb   1/1   Running   0             3m54s
+api-74855f9cfd-dqn7z   1/1   Running   0             3m39s
+api-74855f9cfd-gmmnx   1/1   Running   1 (24m ago)   8h
+api-74855f9cfd-r6gbm   1/1   Running   0             3m54s
+api-74855f9cfd-vdbkp   1/1   Running   0             3m39s
 Pods listed: 6
-
---- 2026-10-22 02:47:15 ---
-NAME      REFERENCE        TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 122%/50%   2         6         6          40m
-api-74855f9cfd-5lj68   1/1   Running   1 (3m2s ago)   40m
-api-74855f9cfd-7wkr4   1/1   Running   0              108s
-api-74855f9cfd-fg5ng   1/1   Running   0              93s
-api-74855f9cfd-gmmnx   1/1   Running   0              92s
-api-74855f9cfd-lht7c   1/1   Running   0              108s
-api-74855f9cfd-whmqk   1/1   Running   0              40m
-Pods listed: 6
-
---- 2026-10-22 02:47:45 ---
-NAME      REFERENCE        TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 37%/50%   2         6         6          41m
-api-74855f9cfd-5lj68   1/1   Running   1 (3m33s ago)   41m
-api-74855f9cfd-7wkr4   1/1   Running   0               2m19s
-api-74855f9cfd-fg5ng   1/1   Running   0               2m4s
-api-74855f9cfd-gmmnx   1/1   Running   0               2m3s
-api-74855f9cfd-lht7c   1/1   Running   0               2m19s
-api-74855f9cfd-whmqk   1/1   Running   0               41m
-Pods listed: 6
-
---- 2026-10-22 02:48:16 ---
-NAME      REFERENCE        TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 37%/50%   2         6         6          41m
-api-74855f9cfd-5lj68   1/1   Running   1 (4m3s ago)   41m
-api-74855f9cfd-7wkr4   1/1   Running   0              2m49s
-api-74855f9cfd-fg5ng   1/1   Running   0              2m34s
-api-74855f9cfd-gmmnx   1/1   Running   0              2m33s
-api-74855f9cfd-lht7c   1/1   Running   0              2m49s
-api-74855f9cfd-whmqk   1/1   Running   0              41m
-Pods listed: 6
-
---- 2026-10-22 02:48:47 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         6          42m
-api-74855f9cfd-5lj68   1/1   Running   1 (4m34s ago)   42m
-api-74855f9cfd-7wkr4   1/1   Running   0               3m20s
-api-74855f9cfd-fg5ng   1/1   Running   0               3m5s
-api-74855f9cfd-gmmnx   1/1   Running   0               3m4s
-api-74855f9cfd-lht7c   1/1   Running   0               3m20s
-api-74855f9cfd-whmqk   1/1   Running   0               42m
-Pods listed: 6
-
---- 2026-10-22 02:49:17 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         6          42m
-api-74855f9cfd-5lj68   1/1   Running   1 (5m4s ago)   42m
-api-74855f9cfd-7wkr4   1/1   Running   0              3m50s
-api-74855f9cfd-fg5ng   1/1   Running   0              3m35s
-api-74855f9cfd-gmmnx   1/1   Running   0              3m34s
-api-74855f9cfd-lht7c   1/1   Running   0              3m50s
-api-74855f9cfd-whmqk   1/1   Running   0              42m
-Pods listed: 6
-
---- 2026-10-22 02:49:47 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         6          43m
-api-74855f9cfd-5lj68   1/1   Running   1 (5m35s ago)   43m
-api-74855f9cfd-7wkr4   1/1   Running   0               4m21s
-api-74855f9cfd-fg5ng   1/1   Running   0               4m6s
-api-74855f9cfd-gmmnx   1/1   Running   0               4m5s
-api-74855f9cfd-lht7c   1/1   Running   0               4m21s
-api-74855f9cfd-whmqk   1/1   Running   0               43m
-Pods listed: 6
-
---- 2026-10-22 02:50:18 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         6          43m
-api-74855f9cfd-5lj68   1/1   Running   1 (6m6s ago)   43m
-api-74855f9cfd-7wkr4   1/1   Running   0              4m52s
-api-74855f9cfd-fg5ng   1/1   Running   0              4m37s
-api-74855f9cfd-gmmnx   1/1   Running   0              4m36s
-api-74855f9cfd-lht7c   1/1   Running   0              4m52s
-api-74855f9cfd-whmqk   1/1   Running   0              43m
-Pods listed: 6
-
---- 2026-10-22 02:50:49 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 6%/50%   2         6         6          44m
-api-74855f9cfd-5lj68   1/1   Running   1 (6m36s ago)   44m
-api-74855f9cfd-7wkr4   1/1   Running   0               5m22s
-api-74855f9cfd-fg5ng   1/1   Running   0               5m7s
-api-74855f9cfd-gmmnx   1/1   Running   0               5m6s
-api-74855f9cfd-lht7c   1/1   Running   0               5m22s
-api-74855f9cfd-whmqk   1/1   Running   0               44m
-Pods listed: 6
-
---- 2026-10-22 02:51:19 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 6%/50%   2         6         6          44m
-api-74855f9cfd-5lj68   1/1   Running   1 (7m6s ago)   44m
-api-74855f9cfd-7wkr4   1/1   Running   0              5m52s
-api-74855f9cfd-fg5ng   1/1   Running   0              5m37s
-api-74855f9cfd-gmmnx   1/1   Running   0              5m36s
-api-74855f9cfd-lht7c   1/1   Running   0              5m52s
-api-74855f9cfd-whmqk   1/1   Running   0              44m
-Pods listed: 6
-
---- 2026-10-22 02:51:49 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         6          45m
-api-74855f9cfd-5lj68   1/1   Running   1 (7m37s ago)   45m
-api-74855f9cfd-7wkr4   1/1   Running   0               6m23s
-api-74855f9cfd-fg5ng   1/1   Running   0               6m8s
-api-74855f9cfd-gmmnx   1/1   Running   0               6m7s
-api-74855f9cfd-lht7c   1/1   Running   0               6m23s
-api-74855f9cfd-whmqk   1/1   Running   0               45m
-Pods listed: 6
-
---- 2026-10-22 02:52:20 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         6          45m
-api-74855f9cfd-7wkr4   1/1   Running       0     6m54s
-api-74855f9cfd-gmmnx   1/1   Running       0     6m38s
-api-74855f9cfd-whmqk   1/1   Terminating   0     45m
-Pods listed: 3
-
---- 2026-10-22 02:52:51 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          46m
-api-74855f9cfd-7wkr4   1/1   Running   0     7m24s
-api-74855f9cfd-gmmnx   1/1   Running   0     7m8s
-Pods listed: 2
-
---- 2026-10-22 02:53:21 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          46m
-api-74855f9cfd-7wkr4   1/1   Running   0     7m55s
-api-74855f9cfd-gmmnx   1/1   Running   0     7m39s
-Pods listed: 2
-
---- 2026-10-22 02:53:52 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          47m
-api-74855f9cfd-7wkr4   0/1   Running   0     8m50s
-api-74855f9cfd-gmmnx   1/1   Running   0     8m34s
-Pods listed: 2
-
---- 2026-10-22 02:54:47 ---
-NAME      REFERENCE        TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: <unknown>/50%   2         6         2          48m
-api-74855f9cfd-7wkr4   1/1   Running   0     9m21s
-api-74855f9cfd-gmmnx   1/1   Running   0     9m5s
-Pods listed: 2
-
---- 2026-10-22 02:55:18 ---
-NAME      REFERENCE        TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: <unknown>/50%   2         6         2          48m
-api-74855f9cfd-7wkr4   1/1   Running   0     9m52s
-api-74855f9cfd-gmmnx   1/1   Running   0     9m36s
-Pods listed: 2
-
---- 2026-10-22 02:55:49 ---
-NAME      REFERENCE        TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: <unknown>/50%   2         6         2          49m
-api-74855f9cfd-7wkr4   1/1   Running   0     10m
-api-74855f9cfd-gmmnx   1/1   Running   0     10m
-Pods listed: 2
-
---- 2026-10-22 02:56:20 ---
-NAME      REFERENCE        TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: <unknown>/50%   2         6         2          49m
-api-74855f9cfd-7wkr4   1/1   Running   0     10m
-api-74855f9cfd-gmmnx   1/1   Running   0     10m
-Pods listed: 2
-
---- 2026-10-22 02:56:50 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          50m
-api-74855f9cfd-7wkr4   1/1   Running   0     11m
-api-74855f9cfd-gmmnx   1/1   Running   0     11m
-Pods listed: 2
-
---- 2026-10-22 02:57:20 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          50m
-api-74855f9cfd-7wkr4   1/1   Running   0     11m
-api-74855f9cfd-gmmnx   1/1   Running   0     11m
-Pods listed: 2
-
---- 2026-10-22 02:57:51 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          51m
-api-74855f9cfd-7wkr4   1/1   Running   0     12m
-api-74855f9cfd-gmmnx   1/1   Running   0     12m
-Pods listed: 2
-
---- 2026-10-22 02:58:21 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          51m
-api-74855f9cfd-7wkr4   1/1   Running   0     12m
-api-74855f9cfd-gmmnx   1/1   Running   0     12m
-Pods listed: 2
-
---- 2026-10-22 02:58:52 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          52m
-api-74855f9cfd-7wkr4   1/1   Running   0     13m
-api-74855f9cfd-gmmnx   1/1   Running   0     13m
-Pods listed: 2
-
---- 2026-10-22 02:59:22 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          52m
-api-74855f9cfd-7wkr4   1/1   Running   0     13m
-api-74855f9cfd-gmmnx   1/1   Running   0     13m
-Pods listed: 2
-
---- 2026-10-22 02:59:53 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          53m
-api-74855f9cfd-7wkr4   1/1   Running   0     14m
-api-74855f9cfd-gmmnx   1/1   Running   0     14m
-Pods listed: 2
-
---- 2026-10-22 03:00:24 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          53m
-api-74855f9cfd-7wkr4   1/1   Running   0     14m
-api-74855f9cfd-gmmnx   1/1   Running   0     14m
-Pods listed: 2
-
---- 2026-10-22 03:00:54 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 6%/50%   2         6         2          54m
-api-74855f9cfd-7wkr4   1/1   Running   0     15m
-api-74855f9cfd-gmmnx   1/1   Running   0     15m
-Pods listed: 2
-
---- 2026-10-22 03:01:24 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 6%/50%   2         6         2          54m
-api-74855f9cfd-7wkr4   1/1   Running   0     15m
-api-74855f9cfd-gmmnx   1/1   Running   0     15m
-Pods listed: 2
-
---- 2026-10-22 03:01:55 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          55m
-api-74855f9cfd-7wkr4   1/1   Running   0     16m
-api-74855f9cfd-gmmnx   1/1   Running   0     16m
-Pods listed: 2
-
---- 2026-10-22 03:02:25 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          55m
-api-74855f9cfd-7wkr4   1/1   Running   0     16m
-api-74855f9cfd-gmmnx   1/1   Running   0     16m
-Pods listed: 2
-
---- 2026-10-22 03:02:56 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          56m
-api-74855f9cfd-7wkr4   1/1   Running   0     17m
-api-74855f9cfd-gmmnx   1/1   Running   0     17m
-Pods listed: 2
-
---- 2026-10-22 03:03:26 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          56m
-api-74855f9cfd-7wkr4   1/1   Running   0     18m
-api-74855f9cfd-gmmnx   1/1   Running   0     17m
-Pods listed: 2
-
---- 2026-10-22 03:03:57 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 4%/50%   2         6         2          57m
-api-74855f9cfd-7wkr4   1/1   Running   0     18m
-api-74855f9cfd-gmmnx   1/1   Running   0     18m
-Pods listed: 2
-
---- 2026-10-22 03:04:27 ---
-NAME      REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
-api-hpa   Deployment/api   cpu: 3%/50%   2         6         2          57m
-api-74855f9cfd-7wkr4   1/1   Running   0     19m
-api-74855f9cfd-gmmnx   1/1   Running   0     18m
-Pods listed: 2
 

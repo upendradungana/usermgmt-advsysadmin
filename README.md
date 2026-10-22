@@ -74,6 +74,8 @@ usermgmt/
 ├── README.md                          this file
 ├── install.ps1                        PowerShell helper used during installation/setup
 ├── hpa-log.txt                        30-second HPA and Pod-count timeline recorded during the load test
+├── platform/
+│   └── metrics-server/                copies of the minikube metrics-server add-on files, kept for inspection only (not applied by hand)
 ├── app/
 │   ├── app.py                         Flask REST API (users CRUD, /healthz, /ready) and the route that serves the UI at /
 │   ├── static/
@@ -225,6 +227,22 @@ The two `admission` Pods ending in `Completed` is correct. The controller must b
 > kubectl delete pod -n ingress-nginx --all
 > minikube addons enable ingress
 > ```
+
+**Optional: keep a copy of the metrics-server definition (for inspection)**
+
+*What happens:* the add-on is installed by minikube, so its YAML is not in this repository. minikube keeps the files on the node, and `docker cp` copies them out (the node is a Docker container named `minikube`). The copies are for reading only. Do **not** apply them by hand.
+
+```powershell
+mkdir platform\metrics-server -Force
+minikube ssh -- ls /etc/kubernetes/addons
+docker cp minikube:/etc/kubernetes/addons/metrics-server-deployment.yaml platform\metrics-server\metrics-server-deployment.yaml
+docker cp minikube:/etc/kubernetes/addons/metrics-server-service.yaml platform\metrics-server\metrics-server-service.yaml
+docker cp minikube:/etc/kubernetes/addons/metrics-apiservice.yaml platform\metrics-server\metrics-apiservice.yaml
+docker cp minikube:/etc/kubernetes/addons/metrics-server-rbac.yaml platform\metrics-server\metrics-server-rbac.yaml
+Get-ChildItem platform\metrics-server | Select-Object Name, Length
+```
+
+Expected: four files with non-zero sizes. File names can differ between minikube versions, so use the names that the `ls` command prints. (`minikube cp` was tried first and failed on Windows with "expected to write N bytes, but wrote 0".)
 
 ### 1.8 Install the Vertical Pod Autoscaler (VPA)
 
