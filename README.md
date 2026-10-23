@@ -72,7 +72,6 @@ Namespaces, StorageClass / PV / PVC, Secrets, ConfigMaps, StatefulSets, headless
 ```text
 usermgmt/
 ├── README.md                          this file
-├── install.ps1                        PowerShell helper used during installation/setup
 ├── hpa-log.txt                        30-second HPA and Pod-count timeline recorded during the load test
 ├── platform/
 │   └── metrics-server/                copies of the minikube metrics-server add-on files, kept for inspection only (not applied by hand)
